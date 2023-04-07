@@ -16,10 +16,9 @@ import { Component, Build } from '@stencil/core';
 
 @Component({
   tag: 'stencil-app',
-  styleUrl: 'stencil-app.css'
+  styleUrl: 'stencil-app.css',
 })
 export class StencilApp {
-
   componentDidLoad() {
     if (Build.isDev) {
       console.log('im in dev mode');

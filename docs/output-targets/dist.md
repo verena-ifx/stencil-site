@@ -12,11 +12,10 @@ The `dist` type is to generate the component(s) as a reusable library that can b
 ```tsx
 outputTargets: [
   {
-    type: 'dist'
-  }
-]
+    type: 'dist',
+  },
+];
 ```
-
 
 ## How is this different from "dist-custom-elements" output target?
 

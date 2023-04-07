@@ -11,13 +11,14 @@ Stencil uses [Rollup](https://rollupjs.org/guide/en/) under the hood to bundle y
 
 ## One Component Per Module
 
-For Stencil to bundle your components most efficiently, you must declare a single component (class decorated with `@Component`) per *TypeScript* file, and the component itself **must** have a unique `export`. By doing so, Stencil is able to easily analyze the entire component graph within the app, and best understand how components should be bundled together. Under-the-hood it uses the Rollup bundler to efficiently bundled shared code together. Additionally, lazy-loading is a default feature of Stencil, so code-splitting is already happening automatically, and only dynamically importing components which are being used on the page.
+For Stencil to bundle your components most efficiently, you must declare a single component (class decorated with `@Component`) per _TypeScript_ file, and the component itself **must** have a unique `export`. By doing so, Stencil is able to easily analyze the entire component graph within the app, and best understand how components should be bundled together. Under-the-hood it uses the Rollup bundler to efficiently bundled shared code together. Additionally, lazy-loading is a default feature of Stencil, so code-splitting is already happening automatically, and only dynamically importing components which are being used on the page.
 
 Modules that contain a component are entry-points, which means that no other module should import anything from them.
 
 The following example is **NOT** valid:
 
 **src/components/my-cmp.tsx:**
+
 ```tsx
 // This module has a component, you cannot export anything else
 export function someUtilFunction() {
@@ -25,7 +26,7 @@ export function someUtilFunction() {
 }
 
 @Component({
-  tag: 'my-cmp'
+  tag: 'my-cmp',
 })
 export class MyCmp {}
 ```
@@ -45,6 +46,7 @@ In this case, the compiler will emit an error that looks like this:
 The solution is to move any shared functions or classes to a different `.ts` file, like this:
 
 **src/utils.ts:**
+
 ```tsx
 export function someUtilFunction() {
   console.log('do stuff');
@@ -52,11 +54,12 @@ export function someUtilFunction() {
 ```
 
 **src/components/my-cmp.tsx:**
+
 ```tsx
 import { someUtilFunction } from '../utils.ts';
 
 @Component({
-  tag: 'my-cmp'
+  tag: 'my-cmp',
 })
 export class MyCmp {}
 ```
@@ -67,11 +70,10 @@ export class MyCmp {}
 import { someUtilFunction } from '../utils.ts';
 
 @Component({
-  tag: 'my-cmp-two'
+  tag: 'my-cmp-two',
 })
 export class MyCmpTwo {}
 ```
-
 
 ## CommonJS Dependencies
 
@@ -102,11 +104,11 @@ We can use the `config.commonjs.namedExports` setting in the `stencil.config.ts`
 export const config = {
   commonjs: {
     namedExports: {
-       // commonjs-dep has a "hello" export
-      'commonjs-dep': ['hello']
-    }
-  }
-}
+      // commonjs-dep has a "hello" export
+      'commonjs-dep': ['hello'],
+    },
+  },
+};
 ```
 
 :::note
@@ -114,7 +116,6 @@ We can set a map of `namedExports` for problematic dependencies, in this case, w
 :::
 
 For further information, check out the [rollup-plugin-commonjs docs](https://github.com/rollup/rollup-plugin-commonjs).
-
 
 ## Custom Rollup plugins
 
@@ -125,18 +126,17 @@ export const config = {
   rollupPlugins: {
     before: [
       // Plugins injected before rollupNodeResolve()
-      resolvePlugin()
+      resolvePlugin(),
     ],
     after: [
       // Plugins injected after commonjs()
-      nodePolyfills()
-    ]
-  }
-}
+      nodePolyfills(),
+    ],
+  },
+};
 ```
 
 As a rule of thumb, plugins that need to resolve modules, should be place in `before`, while code transform plugins like: `node-polyfills`, `replace`... should be placed in `after`. Follow the plugin's documentation to make sure it's executed in the right order.
-
 
 ## Node Polyfills
 
@@ -166,10 +166,8 @@ import nodePolyfills from 'rollup-plugin-node-polyfills';
 export const config: Config = {
   namespace: 'mycomponents',
   rollupPlugins: {
-    after: [
-      nodePolyfills(),
-    ]
-  }
+    after: [nodePolyfills()],
+  },
 };
 ```
 
@@ -183,4 +181,4 @@ ES modules are always parsed in strict mode. That means that certain non-strict 
 
 Luckily, there is absolutely no good reason not to use strict mode for everything — so the solution to this problem is to lobby the authors of those modules to update them.
 
-*Source: [https://github.com/rollup/rollup-plugin-commonjs#strict-mode](https://github.com/rollup/rollup-plugin-commonjs#strict-mode)*
+_Source: [https://github.com/rollup/rollup-plugin-commonjs#strict-mode](https://github.com/rollup/rollup-plugin-commonjs#strict-mode)_

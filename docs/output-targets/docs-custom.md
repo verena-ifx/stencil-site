@@ -19,21 +19,19 @@ export const config: Config = {
     {
       type: 'docs-custom',
       generator: (docs: JsonDocs) => {
-          // Custom logic goes here
-      }
-    }
-  ]
+        // Custom logic goes here
+      },
+    },
+  ],
 };
 ```
 
 ## Config
 
-| Property    | Description                                                                              | Default |
-|-------------|------------------------------------------------------------------------------------------|---------|
-| `generator` | A function with the docs json data as argument.                                          |         |
-| `strict`    | If set to true, Stencil will output a warning whenever there is missing documentation.   | `false` |
-
-
+| Property    | Description                                                                            | Default |
+| ----------- | -------------------------------------------------------------------------------------- | ------- |
+| `generator` | A function with the docs json data as argument.                                        |         |
+| `strict`    | If set to true, Stencil will output a warning whenever there is missing documentation. | `false` |
 
 # Custom Docs Data Model
 
@@ -41,36 +39,35 @@ The generated docs JSON data will in the type of `JsonDocs` which consists of ma
 
 ## JsonDocs
 
-| Property    | Description                                                                              |
-|-------------|------------------------------------------------------------------------------------------|
-| `components` | Array with type of `JsonDocsComponent[]` which consists component information|
-| `timestamp`    | `string` with timestamp   |
-| `compiler`    | `Object` with `typescriptVersion`, `compiler`, and `version`   |
+| Property     | Description                                                                   |
+| ------------ | ----------------------------------------------------------------------------- |
+| `components` | Array with type of `JsonDocsComponent[]` which consists component information |
+| `timestamp`  | `string` with timestamp                                                       |
+| `compiler`   | `Object` with `typescriptVersion`, `compiler`, and `version`                  |
 
 ## JsonDocsComponent
 
-| Property    | Description                                                                              |
-|-------------|------------------------------------------------------------------------------------------|
-| `dirPath` | Component directory path |
-| `fileName`    | File name |
-| `filePath`    | File path |
-| `readmePath`    | Readme file path |
-| `usagesDir`    | Usages directory path  |
-| `encapsulation`    | Component `encapsulation` type. Possible values are `shadow`, `scoped`, `none`  |
-| `tag`    | Component tag described in `.tsx` file  |
-| `readme`    | Component readme file first line content  |
-| `docs`    | Description written in top of `@Component` e.g. /**  Documentation Example */. If no JSDoc is present, default to any manually written text in the component's markdown file. Empty otherwise. |
-| `docsTags`    | Annotations (In the way of JSDoc ) written in `.tsx` file will be collected here   |
-| `overview`    | Description written in top of `@Component` e.g. /**  Documentation Example */ |
-| `usage`    |    |
-| `props`    | Array of component properties information   |
-| `methods`    | Array of component methods information   |
-| `events`    |    |
-| `listeners`    |    |
-| `styles`    |    |
-| `slots`    |    |
-| `parts`    |    |
-| `dependents`    |  Array of components where current component is used  |
-| `dependencies`    |  Array of components which is used in current component  |
-| `dependencyGraph`    | Describes a tree of components coupling |
-
+| Property          | Description                                                                                                                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dirPath`         | Component directory path                                                                                                                                                                       |
+| `fileName`        | File name                                                                                                                                                                                      |
+| `filePath`        | File path                                                                                                                                                                                      |
+| `readmePath`      | Readme file path                                                                                                                                                                               |
+| `usagesDir`       | Usages directory path                                                                                                                                                                          |
+| `encapsulation`   | Component `encapsulation` type. Possible values are `shadow`, `scoped`, `none`                                                                                                                 |
+| `tag`             | Component tag described in `.tsx` file                                                                                                                                                         |
+| `readme`          | Component readme file first line content                                                                                                                                                       |
+| `docs`            | Description written in top of `@Component` e.g. /\*_ Documentation Example _/. If no JSDoc is present, default to any manually written text in the component's markdown file. Empty otherwise. |
+| `docsTags`        | Annotations (In the way of JSDoc ) written in `.tsx` file will be collected here                                                                                                               |
+| `overview`        | Description written in top of `@Component` e.g. /\*_ Documentation Example _/                                                                                                                  |
+| `usage`           |                                                                                                                                                                                                |
+| `props`           | Array of component properties information                                                                                                                                                      |
+| `methods`         | Array of component methods information                                                                                                                                                         |
+| `events`          |                                                                                                                                                                                                |
+| `listeners`       |                                                                                                                                                                                                |
+| `styles`          |                                                                                                                                                                                                |
+| `slots`           |                                                                                                                                                                                                |
+| `parts`           |                                                                                                                                                                                                |
+| `dependents`      | Array of components where current component is used                                                                                                                                            |
+| `dependencies`    | Array of components which is used in current component                                                                                                                                         |
+| `dependencyGraph` | Describes a tree of components coupling                                                                                                                                                        |

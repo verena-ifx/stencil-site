@@ -10,10 +10,12 @@ slug: /getting-started
 ## Starting a New Project
 
 ### Prerequisites
-Stencil requires a recent LTS version of [NodeJS](https://nodejs.org/) and npm/yarn. 
+
+Stencil requires a recent LTS version of [NodeJS](https://nodejs.org/) and npm/yarn.
 Make sure you've installed and/or updated Node before continuing.
 
 ### Running the `create-stencil` CLI
+
 The `create-stencil` CLI can be used to scaffold a new Stencil project, and can be run using the following command:
 
 ```bash npm2yarn
@@ -27,12 +29,12 @@ Stencil can be used to create standalone components, or entire apps.
 ? Select a starter project.
 
 Starters marked as [community] are developed by the Stencil
-Community, rather than Ionic. For more information on the 
+Community, rather than Ionic. For more information on the
 Stencil Community, please see github.com/stencil-community
 
 ❯   component                Collection of web components that can be
                              used anywhere
-    app [community]          Minimal starter for building a Stencil 
+    app [community]          Minimal starter for building a Stencil
                              app or website
     ionic-pwa [community]    Ionic PWA starter with tabs layout and routes
 ```
@@ -88,12 +90,12 @@ This will change your current directory to `my-first-stencil-project`, install y
 
 The second section of the `create-stencil` output describes a few useful commands available during the development process:
 
-- `npm start` starts a local development server. The development server will open a new browser tab containing your 
-project's components. The dev-server uses hot-module reloading to update your components in the browser as you modify
-them for a rapid feedback cycle.
+- `npm start` starts a local development server. The development server will open a new browser tab containing your
+  project's components. The dev-server uses hot-module reloading to update your components in the browser as you modify
+  them for a rapid feedback cycle.
 
 - `npm run build` creates a production-ready version of your components. The components generated in this step are not
-meant to be used in the local development server, but rather within a project that consumes your components.
+  meant to be used in the local development server, but rather within a project that consumes your components.
 
 - `npm test` runs your project's tests. The `create-stencil` CLI has created both end-to-end and unit tests when scaffolding your project.
 
@@ -104,7 +106,7 @@ If you wish to use git, run the following after changing your current directory 
 ```bash
 $ git init
 $ git add -A
-$ git commit -m "initialize project using stencil cli" 
+$ git commit -m "initialize project using stencil cli"
 ```
 
 ## My First Component
@@ -151,6 +153,7 @@ When rendered, the browser will display `Hello World! I'm Stencil 'Don't call me
 Let's dive in and describe what's happening in `my-component`, line-by-line.
 
 After the import statements, the first piece we see is the [`@Component` decorator](../components/component.md):
+
 ```tsx
 @Component({
   tag: 'my-component',
@@ -158,9 +161,11 @@ After the import statements, the first piece we see is the [`@Component` decorat
   shadow: true,
 })
 ```
+
 This decorator provides metadata about our component to the Stencil compiler.
 Information, such as the custom element name (`tag`) to use, can be set here.
 This decorator tells Stencil to:
+
 - Set the [element's name](../components/component.md#tag) to 'my-component'
 - [Apply the stylesheet](../components/component.md#styleurl) 'my-component.css' to the component
 - Enable [native Shadow DOM functionality](../components/component.md#shadow) for this component
@@ -175,11 +180,13 @@ Within this class is where you'll write the bulk of your code to bring your Sten
 
 Next, the component contains three class members, `first`, `middle` and `last`.
 Each of these class members have the [`@Prop()` decorator](../components/properties.md#the-prop-decorator-prop) applied to them:
+
 ```ts
   @Prop() first: string;
   @Prop() middle: string;
   @Prop() last: string;
 ```
+
 `@Prop()` tells Stencil that the property is public to the component, and allows Stencil to rerender when any of these public properties change.
 We'll see how this works after discussing the `render()` function.
 
@@ -192,7 +199,7 @@ The quick idea is that our render function needs to return a representation of t
   private getText(): string {
     return format(this.first, this.middle, this.last);
   }
-  
+
   render() {
     return <div>Hello, World! I'm {this.getText()}</div>;
   }
@@ -225,9 +232,11 @@ stencil g
 
 If you would like to run `stencil generate` outside of a Stencil project, it can be installed globally.
 To do so, prefix the command above with [`npx`](https://docs.npmjs.com/cli/v9/commands/npx), like so:
+
 ```shell
 npx stencil generate
 ```
+
 Running a command prefixed with `npx` will fetch the package for you automatically and prompt you to install it.
 Once installed, Stencil will run the task to scaffold a new component.
 
@@ -238,7 +247,7 @@ The component tag name needs to be lowercase and contain at least one dash ('-')
 stencil generate my-new-component
 ```
 
-The generator will ask you which files to generate. 
+The generator will ask you which files to generate.
 This allows you to bootstrap a stylesheet as well as spec and e2e tests along with the component file.
 
 All components will be generated within the `src/components` folder.
@@ -261,7 +270,6 @@ src
             ├── page-home.spec.ts
             └── page-home.tsx
 ```
-
 
 ## Updating Stencil
 

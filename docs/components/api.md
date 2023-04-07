@@ -9,7 +9,6 @@ slug: /api
 
 The whole API provided by stencil can be condensed in a set of decorators, lifecycles hooks and rendering methods.
 
-
 ## Decorators
 
 Decorators are a pure compiler-time construction used by stencil to collect all the metadata about a component, the properties, attributes and methods it might expose, the events it might emit or even the associated stylesheets.
@@ -23,7 +22,6 @@ Once all the metadata has been collected, all the decorators are removed from th
 - [@Method()](./methods.md#method-decorator) declares an exposed public method
 - [@Event()](./events.md#event-decorator) declares a DOM event the component might emit
 - [@Listen()](./events.md#listen-decorator) listens for DOM events
-
 
 ## Lifecycle hooks
 

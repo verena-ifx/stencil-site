@@ -98,9 +98,7 @@ export interface EmulateConfig {
   viewport?: EmulateViewport;
 }
 
-
 export interface EmulateViewport {
-
   /**
    * Page width in pixels.
    */
@@ -130,6 +128,5 @@ export interface EmulateViewport {
    * Specifies if viewport is in landscape mode. Defaults to false.
    */
   isLandscape?: boolean;
-
 }
 ```

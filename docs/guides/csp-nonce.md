@@ -60,7 +60,7 @@ setNonce('r4nd0m');
 // Generic Angular bootstrapping
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
 defineCustomElements();
 ```
@@ -89,7 +89,7 @@ setNonce('r4nd0m');
 // Generic Angular bootstrapping
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 ```
 
 #### WWW

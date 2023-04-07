@@ -63,11 +63,11 @@ export const config: Config = {
 };
 ```
 
-| Option                        | Description                                                                                                                                                                                                                                                                                                                                                                                               |
-| ----------------------------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `default`                     | No additional re-export or auto-definition behavior will be performed.<br/><br/>This value will be used if no explicit value is set in the config, or if a given value is not a valid option.                                                                                                                                                                                                             |
-| `auto-define-custom-elements` | A component and its children will be automatically defined with the `CustomElementRegistry` when the component's module is imported.                                                                                                                                                                                                                                                                      |
-| `bundle`                      | A utility `defineCustomElements()` function is exported from the `index.js` file of the output directory. This function can be used to quickly define all Stencil components in a project on the custom elements registry.                                                                                                                                                                                |
+| Option                        | Description                                                                                                                                                                                                                                                                     |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `default`                     | No additional re-export or auto-definition behavior will be performed.<br/><br/>This value will be used if no explicit value is set in the config, or if a given value is not a valid option.                                                                                   |
+| `auto-define-custom-elements` | A component and its children will be automatically defined with the `CustomElementRegistry` when the component's module is imported.                                                                                                                                            |
+| `bundle`                      | A utility `defineCustomElements()` function is exported from the `index.js` file of the output directory. This function can be used to quickly define all Stencil components in a project on the custom elements registry.                                                      |
 | `single-export-module`        | All component and custom element definition helper functions will be exported from the `index.js` file in the output directory. This file can be used as the root module when distributing your component library, see [below](#distributing-custom-elements) for more details. |
 
 :::note
@@ -149,7 +149,7 @@ The contents may look different if [`customElementsExportBehavior`](#customeleme
 
 ## Making Assets Available
 
-For performance reasons, the generated bundle does not include [local assets](../guides/assets.md) built within the JavaScript output, 
+For performance reasons, the generated bundle does not include [local assets](../guides/assets.md) built within the JavaScript output,
 but instead it's recommended to keep static assets as external files. By keeping them external this ensures they can be requested on-demand, rather
 than either welding their content into the JS file, or adding many URLs for the bundler to add to the output.
 One method to ensure [assets](../guides/assets.md) are available to external builds and http servers is to set the asset path using `setAssetPath()`.

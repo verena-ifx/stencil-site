@@ -32,7 +32,6 @@ In this example we're returning the JSX representation of a `div`, with two chil
 
 If you want to modify the host element itself, such as adding a class or an attribute to the component itself, use the `<Host>` functional component. Check for more details [here](./host-element.md)
 
-
 ## Data Binding
 
 Components often need to render dynamic data. To do this in JSX, use `{ }` around a variable:
@@ -56,7 +55,6 @@ If you're familiar with ES6 template variables, JSX variables are very similar, 
 //JSX
 Hello {this.name}
 ```
-
 
 ## Conditionals
 
@@ -91,9 +89,8 @@ render() {
 **Please note:** Stencil reuses DOM elements for better performance. Consider the following code:
 
 ```tsx
-{someCondition
-  ? <my-counter initialValue={2} />
-  : <my-counter initialValue={5} />
+{
+  someCondition ? <my-counter initialValue={2} /> : <my-counter initialValue={5} />;
 }
 ```
 
@@ -108,14 +105,12 @@ Thus, if `someCondition` changes, the internal state of `<my-counter>` won't be 
 If you want to destroy and recreate a component in a conditional, you can assign the `key` attribute. This tells Stencil that the components are actually different siblings:
 
 ```tsx
-{someCondition
-  ? <my-counter key="a" initialValue={2} />
-  : <my-counter key="b" initialValue={5} />
+{
+  someCondition ? <my-counter key="a" initialValue={2} /> : <my-counter key="b" initialValue={5} />;
 }
 ```
 
 This way, if `someCondition` changes, you get a new `<my-counter>` component with fresh internal state that also runs the lifecycle methods `componentWillLoad()` and `componentDidLoad()`.
-
 
 ## Slots
 
@@ -183,7 +178,6 @@ whether they are created by mapping across an array with
 or simply declared as siblings directly in JSX. This means that at runtime the
 children of the two top-level divs below (`.todo-one` and `.todo-two`) will be
 represented the same way:
-
 
 ```tsx
 render() {
@@ -270,7 +264,6 @@ export class MyComponent {
 }
 ```
 
-
 ## Complex Template Content
 
 So far we've seen examples of how to return only a single root element. We can also nest elements inside our root element
@@ -336,20 +329,19 @@ In cases where you need to get a direct reference to an element, like you would 
   tag: 'app-home',
 })
 export class AppHome {
-
   textInput!: HTMLInputElement;
 
   handleSubmit = (event: Event) => {
     event.preventDefault();
     console.log(this.textInput.value);
-  }
+  };
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
           Name:
-          <input type="text" ref={(el) => this.textInput = el as HTMLInputElement} />
+          <input type="text" ref={(el) => (this.textInput = el as HTMLInputElement)} />
         </label>
         <input type="submit" value="Submit" />
       </form>
@@ -359,7 +351,6 @@ export class AppHome {
 ```
 
 In this example we are using `ref` to get a reference to our input `ref={(el) => this.textInput = el as HTMLInputElement}`. We can then use that ref to do things such as grab the value from the text input directly `this.textInput.value`.
-
 
 ## Avoid Shared JSX Nodes
 
@@ -394,7 +385,6 @@ Alternatively, creating a factory function to return a common JSX node could be 
   tag: 'my-cmp',
 })
 export class MyCmp {
-
   getText() {
     return <div>Text</div>;
   }

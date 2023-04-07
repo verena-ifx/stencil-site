@@ -32,8 +32,7 @@ Let's say you have a file `src/helpers/utils.ts` that exposes a `getRandomInt` h
 ```tsx
 // src/helpers/utils.ts
 
-export const getRandomInt = (min: number, max: number) =>
-  Math.round(Math.random() * (max - min)) + min;
+export const getRandomInt = (min: number, max: number) => Math.round(Math.random() * (max - min)) + min;
 ```
 
 ```tsx
@@ -78,7 +77,7 @@ Instead of creating a file in a `__mocks__` folder, there is an alternative appr
 // src/foo.spec.ts
 
 jest.mock('./helpers/utils', () => ({
-	getRandomInt: () => 42,
+  getRandomInt: () => 42,
 }));
 
 import { foo } from './services/foo';
@@ -102,14 +101,14 @@ import { getRandomInt } from '../../helpers/utils';
 
 @Component({ tag: 'foo-component' })
 export class Foo {
-	@Method()
-	async bar() {
-		return getRandomInt(0, 10);
-	}
+  @Method()
+  async bar() {
+    return getRandomInt(0, 10);
+  }
 
-	render() {
-		return <div />;
-	}
+  render() {
+    return <div />;
+  }
 }
 ```
 
@@ -117,25 +116,25 @@ export class Foo {
 // src/foo.e2e.ts
 
 jest.mock('./helpers/utils', () => ({
-	getRandomInt: () => 42,
+  getRandomInt: () => 42,
 }));
 
 import { newSpecPage } from '@stencil/core/testing';
 import { Foo } from './components/foo/foo';
 
 describe('Foo', () => {
-	it('bar()', async () => {
-		const page = await newSpecPage({
-			components: [Foo],
-			html: '<foo-component></foo-component>',
-		});
-		const foo = page.body.querySelector('foo-component');
+  it('bar()', async () => {
+    const page = await newSpecPage({
+      components: [Foo],
+      html: '<foo-component></foo-component>',
+    });
+    const foo = page.body.querySelector('foo-component');
 
-		if (!foo) {
-			throw new Error('Could not find Foo component');
-		}
+    if (!foo) {
+      throw new Error('Could not find Foo component');
+    }
 
-		expect(await foo.bar()).toBe(42);
-	});
+    expect(await foo.bar()).toBe(42);
+  });
 });
 ```

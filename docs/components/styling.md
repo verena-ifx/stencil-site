@@ -57,7 +57,7 @@ With the shadow DOM enabled, only these styles will be applied to the component.
 ### Shadow DOM QuerySelector
 
 When using Shadow DOM and you want to query an element inside your web component, you must first use the [`@Element` decorator](./host-element.md#element-decorator) to gain access to the host element, and then you can use the `shadowRoot` property to perform the query. This is because all of your DOM inside your web component is in a shadowRoot that Shadow DOM creates. For example:
-  
+
 ```tsx
 import { Component, Element } from '@stencil/core';
 

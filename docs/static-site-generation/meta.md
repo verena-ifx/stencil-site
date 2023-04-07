@@ -26,7 +26,7 @@ import { PrerenderConfig } from '@stencil/core';
 export const config: PrerenderConfig = {
   afterHydrate(document, url) {
     document.title = url.pathname;
-  }
+  },
 };
 ```
 
@@ -34,4 +34,4 @@ export const config: PrerenderConfig = {
 
 The `@stencil/helmet` package was a library for managing meta tags dynamically.
 It has since been deprecated.
-For additional information regarding this package, please see its [GitHub page](https://github.com/ionic-team/stencil-helmet) 
+For additional information regarding this package, please see its [GitHub page](https://github.com/ionic-team/stencil-helmet)

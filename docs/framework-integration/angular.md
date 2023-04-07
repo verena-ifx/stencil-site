@@ -122,6 +122,7 @@ workspace `package.json` file:
 # from `/packages/angular-workspace`
 npm uninstall jasmine-core @types/jasmine
 ```
+
 :::
 
 ### Adding the Angular Output Target

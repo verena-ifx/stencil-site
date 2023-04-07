@@ -54,38 +54,37 @@ serving the web page. `hydrateDocument` takes two arguments, a
 config object. The function returns a promise with the hydrated results, with
 the hydrated HTML under the `html` property.
 
-*Example taken from Ionic Angular server*
+_Example taken from Ionic Angular server_
 
- ```javascript
+```javascript
 import { hydrateDocument } from 'yourpackage/hydrate';
 
 export function hydrateComponents(doc) {
-  return hydrateDocument(doc)
-    .then((hydrateResults) => {
-      // execute logic based on results
-      console.log(hydrateResults.html);
-      return hydrateResults;
-    });
+  return hydrateDocument(doc).then((hydrateResults) => {
+    // execute logic based on results
+    console.log(hydrateResults.html);
+    return hydrateResults;
+  });
 }
 ```
 
 #### hydrateDocument Options
 
-  - `canonicalUrl` - string
-  - `constrainTimeouts` - boolean
-  - `clientHydrateAnnotations` - boolean
-  - `cookie` - string
-  - `direction` - string
-  - `language` - string
-  - `maxHydrateCount` - number
-  - `referrer` - string
-  - `removeScripts` - boolean
-  - `removeUnusedStyles` - boolean
-  - `resourcesUrl` - string
-  - `timeout` - number
-  - `title` - string
-  - `url` - string
-  - `userAgent` - string
+- `canonicalUrl` - string
+- `constrainTimeouts` - boolean
+- `clientHydrateAnnotations` - boolean
+- `cookie` - string
+- `direction` - string
+- `language` - string
+- `maxHydrateCount` - number
+- `referrer` - string
+- `removeScripts` - boolean
+- `removeUnusedStyles` - boolean
+- `resourcesUrl` - string
+- `timeout` - number
+- `title` - string
+- `url` - string
+- `userAgent` - string
 
 ### renderToString
 
@@ -94,12 +93,12 @@ and returns a promise of `HydrateResults`. The optional second parameter is a
 config object that can alter the output of the markup. Like `hydrateDocument`,
 the hydrated HTML can be found under the `html` property.
 
-*Example taken from Ionic Core*
+_Example taken from Ionic Core_
 
 ```javascript
 const results = await hydrate.renderToString(srcHtml, {
   prettyHtml: true,
-  removeScripts: true
+  removeScripts: true,
 });
 
 console.log(results.html);
@@ -107,11 +106,11 @@ console.log(results.html);
 
 #### renderToString Options
 
-  - `approximateLineWidth` - number
-  - `prettyHtml` - boolean
-  - `removeAttributeQuotes` - boolean
-  - `removeBooleanAttributeQuotes` - boolean
-  - `removeEmptyAttributes` - boolean
-  - `removeHtmlComments` - boolean
-  - `afterHydrate` - boolean
-  - `beforeHydrate` - boolean
+- `approximateLineWidth` - number
+- `prettyHtml` - boolean
+- `removeAttributeQuotes` - boolean
+- `removeBooleanAttributeQuotes` - boolean
+- `removeEmptyAttributes` - boolean
+- `removeHtmlComments` - boolean
+- `afterHydrate` - boolean
+- `beforeHydrate` - boolean

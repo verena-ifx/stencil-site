@@ -19,7 +19,6 @@ However, while debugging you may not need to keep rebuilding the hydrate script,
 
 To only prerender (and avoid rebuilding), you can use the `stencil prerender dist/hydrate/index.js` command, with the path to the script as a flag.
 
-
 ## Tips for Debugging Prerendering
 
 By default, prerendering will start by rendering the homepage, find links within the homepage, and continue to crawl the entire site as it finds more links. While debugging, it might be easier to _not_ crawl every URL in the site, but rather have it only prerender one page. To disable crawling, set the prerender config `crawlUrls: false`.
@@ -34,14 +33,13 @@ import { PrerenderConfig } from '@stencil/core';
 export const config: PrerenderConfig = {
   crawlUrls: false,
   entryUrls: ['/example'],
-  hydrateOptions: _url => {
+  hydrateOptions: (_url) => {
     return {
-      runtimeLogging: true
+      runtimeLogging: true,
     };
-  }
+  },
 };
 ```
-
 
 ## Debugging in VS Code
 
@@ -65,7 +63,7 @@ To debug your prerendering process in VS Code, enter the Debug tab and create a 
         "--max-workers=0",
         "--config=${workspaceFolder}/stencil.config.ts"
       ],
-      "protocol": "inspector",
+      "protocol": "inspector"
     }
   ]
 }
@@ -74,11 +72,9 @@ To debug your prerendering process in VS Code, enter the Debug tab and create a 
 This creates a new debugging configuration using the script that hydrates the app. We're starting up the `stencil prerender` command, and providing it a path to where
 the hydrate script can be found. Next we're using `--max-workers=0` so we do not fork numerous processes to each of your CPUs which will make it difficult to debug.
 
-
 ## Debugging in Others
 
 To Debug in different tools, follow a similar approach to the command being run in the VS Code configuration, calling the `dist/hydrate/index.js` script from Node, passing the provided arguments, and setting breakpoints using your tool of choice's system for breakpoints.
-
 
 # Breakpoints and Stepping
 
